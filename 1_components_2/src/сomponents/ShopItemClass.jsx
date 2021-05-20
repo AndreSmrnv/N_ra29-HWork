@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
-
-export default class ShopItemClass extends React.Component {
-  constructor(...props) {
-    super(...props);
+class ShopItemClass extends React.Component {
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -31,4 +31,8 @@ export default class ShopItemClass extends React.Component {
   }
 }
 
+ShopItemClass.propTypes = {
+  item: PropTypes.object
+};
 
+export default ShopItemClass;
