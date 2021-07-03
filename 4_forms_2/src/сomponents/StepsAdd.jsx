@@ -29,8 +29,7 @@ export default function StepsAdd({ onAdd }) {
             <input
               onChange={handleChange}
               type="date"
-              name="date"
-              id=""
+              name="date"              
               value={form.date}
             />
           </div>
@@ -40,7 +39,6 @@ export default function StepsAdd({ onAdd }) {
               onChange={handleChange}
               type="text"
               name="distance"
-              id=""
               value={form.distance}
             />
           </div>
