@@ -15,11 +15,11 @@ export default function StepsList({steps, onDel}) {
       </div>
       <div className="Container Data">
         {steps.map((step, index) => (
-          <div className="Row" key={index}>
+          <div className="Row" key={step._id}>
             <div>{step.date.toLocaleString("ru", options)}</div>
             <div>{step.distance}</div>
             <div>
-               <span onClick={() => onDel(index)}>✖</span>
+               <span onClick={() => onDel(step._id)}>✖</span>
             </div>
           </div>
         ))}

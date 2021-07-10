@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { INIT_FORM } from '../utils/initData';
+import shortid from 'shortid';
 
 export default function StepsAdd({ onAdd }) {
 
@@ -14,6 +15,7 @@ export default function StepsAdd({ onAdd }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAdd({
+      _id: shortid.generate(),
       date: form.date ? new Date(form.date) : new Date(),
       distance: isFinite(form.distance) ? +form.distance : 0
     });

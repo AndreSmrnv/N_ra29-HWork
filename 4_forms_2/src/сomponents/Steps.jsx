@@ -10,9 +10,9 @@ export default function Steps() {
   const addStep = (form) => {
     setSteps((prev) => ([...prev, form]))
   }
-  const delStep = (index) => {
+  const delStep = (id) => {
     setSteps((prev) => (
-      [...prev.filter((_, indx) => indx !== index)]
+      [...prev.filter((step) => step._id !== id)]
     ))
 
   }
