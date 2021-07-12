@@ -20,11 +20,11 @@ export default function Notes() {
         setNotes([...result]);
       });
   }
-  const addNoteRequest = async (content) => {
+  const addNoteRequest = async (content = 'test') => {
     console.log("fetch post");
     return await fetch(`${process.env.REACT_APP_URL}/notes`, {
       method: 'POST',
-      body: content
+      body: content 
     })
       ;
   };
@@ -39,7 +39,7 @@ export default function Notes() {
   };
 
   const addNote = (form) => {
-    form.textArea.length && addNoteRequest(form.textArea)
+    addNoteRequest(form.textArea)
       .then(() => getData());
 
   }

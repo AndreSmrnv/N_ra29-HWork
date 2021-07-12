@@ -3,9 +3,7 @@ export const INIT_DATA = [
 ];
 
 export const INIT_FORM = {
-  city: "",
-  gmt: "GMT+0",
-  _id: ""
+  textArea: ""  
 };
 
 export const GMT = [ 

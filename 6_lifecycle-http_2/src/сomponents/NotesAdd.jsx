@@ -15,7 +15,7 @@ export default function NotesAdd({ onAdd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAdd(form);
+    form.textArea.length && onAdd(form);
     setForm(INIT_FORM);
   }
 

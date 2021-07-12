@@ -7,7 +7,7 @@ export default function NotesItem({ note, onDel }) {
     <>
       <div className="Note">
         <p>{note.content}</p>
-        <button onClick={() => onDel(note.id)}>✖</button>
+        <button onClick={() => onDel(note.id)} className="NoteDel" >✖</button>
       </div>
     </>
   );
