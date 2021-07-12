@@ -8,7 +8,7 @@ import { INIT_DATA } from '../utils/initData';
 
 export default function Notes() {
   const [notes, setNotes] = useState(INIT_DATA);
-  //const [notes, setNotes] = useState(INIT_DATA);
+  
   useEffect(() => {
     getData()
   }, []);

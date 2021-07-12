@@ -71,12 +71,14 @@
 
 .Form {
   display: flex;
-  align-items: left;
+  align-items: center;
+  flex-direction: column;
 }
 
 .Form button {
   padding: 5px;
   margin: 5px;
+  width: 100%;
 }
 textarea {
   color: initial;
