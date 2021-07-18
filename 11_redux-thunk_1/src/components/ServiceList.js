@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import {Link} from "react-router-dom";
 import {useSelector, useDispatch} from 'react-redux';
 import { removeService, fetchServices, removeServiceRequest } from '../actions/actionCreators';
+import { Preloader, TryAgain } from '../utils/shared/Components';
 
 function ServiceList(props) {
   const {items, loading, error} = useSelector(state => state.serviceList);
@@ -19,19 +20,11 @@ function ServiceList(props) {
 
 
   if (loading) {
-    return (
-    <div className="d-flex align-items-center">
-      <strong>Loading...</strong>
-      <div className="spinner-border ml-auto" role="status" aria-hidden="true"></div>
-    </div>)    
+    return <Preloader />     
   }
 
   if (error) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        <strong>Error</strong> Произошла ошибка
-      </div>
-    )    
+    return <TryAgain error={ error}/>
   }
 
   return (
