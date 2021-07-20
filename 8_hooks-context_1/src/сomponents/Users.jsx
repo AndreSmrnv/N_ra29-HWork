@@ -41,7 +41,7 @@ export default function Users() {
   }
   const getUserDetails = async (id) => {
     setApiError(INIT_ERROR);
-    await fetch(`${process.env.REACT_APP_URL}/${id}.json`)
+    id && await fetch(`${process.env.REACT_APP_URL}/${id}.json`)
       .then(
         (response) => (response.ok)
         ? response.json()
