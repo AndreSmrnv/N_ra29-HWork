@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import UsersList from "./UsersList";
 import UsersCard from "./UsersCard";
-import { INIT_DATA, INIT_ERROR } from '../utils/initData';
+import { INIT_USERS, INIT_ID, INIT_DETAILS, INIT_ERROR } from '../utils/initData';
 import {  TryAgain } from '../utils/shared/Components';
 
 
 
 
 export default function Users() {
-  const [users, setUsers] = useState(INIT_DATA);
-  const [userId, setUserId] = useState(0);
-  const [userDetails, setUserDetails] = useState({});
+  const [users, setUsers] = useState(INIT_USERS);
+  const [userId, setUserId] = useState(INIT_ID);
+  const [userDetails, setUserDetails] = useState(INIT_DETAILS);
   const [apiError, setApiError] = useState(INIT_ERROR);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function Users() {
       .then(
         (response) => (response.ok)
            ? response.json()
-           : Promise.reject(`api err: ${response.status}`)
+           : Promise.reject(`getUser api err: ${response.status}`)
       )
       .then((result) => {
         setUsers([...result]);
@@ -41,11 +41,12 @@ export default function Users() {
   }
   const getUserDetails = async (id) => {
     setApiError(INIT_ERROR);
-    id && await fetch(`${process.env.REACT_APP_URL}/${id}.json`)
+     id &&
+      await fetch(`${process.env.REACT_APP_URL}/${id}.json`)
       .then(
         (response) => (response.ok)
         ? response.json()
-        : Promise.reject(`api err: ${response.status}`)
+        : Promise.reject(`getUserDetails api err: ${response.status}`)
       )
       .then((result) => {
         setUserDetails({ ...result });
@@ -65,7 +66,7 @@ export default function Users() {
   console.log(userDetails);
 
   if (apiError.getUserFailed || apiError.getUserDetailsFailed) {
-    return <TryAgain error={ apiError.errorMsg}/>
+    return <TryAgain  error={ apiError.errorMsg}/>
   }
 
   return (

@@ -14,7 +14,7 @@ export function TryAgain ({error}) {
     return (
         <>
             <div className="alert alert-danger" role="alert">
-                <strong>Произошла ошибка!</strong> {error}
+                <strong>Произошла ошибка! </strong> <p>{error}</p>
             </div>
              <button type='reset' onClick={refreshPage}  >Попробовать еще раз...</button>
       </>  
