@@ -5,7 +5,8 @@ import {
   Card,
   Button,
   Form,
-  FloatingLabel
+  FloatingLabel,
+  CloseButton
 } from 'react-bootstrap';
 import PostsContext from '../services/contexts/postsContext';
 
@@ -53,6 +54,9 @@ export default function EditPost({match}) {
   
   return (
     <Card className="text-center">
+      <Card.Header className="text-end" >
+        <CloseButton onClick={ ()=>history.push(`/`) } />
+      </Card.Header>
             <Card.Title>Редактировать публикацию</Card.Title>
             <Form  onSubmit={handleSubmit}>
         <FloatingLabel controlId="floatingTextarea2" label={`Отредактируй пост ${id}`}>

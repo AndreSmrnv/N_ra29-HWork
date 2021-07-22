@@ -3,7 +3,8 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Redirect } from 'react-router-dom';
 import {  
   Card,
-  Button
+  Button,
+  CloseButton
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import PostsContext from '../services/contexts/postsContext';
@@ -47,6 +48,9 @@ export default function Post({ match }) {
   
   return (
     <Card className="text-center">
+      <Card.Header className="text-end" >
+        <CloseButton onClick={ ()=>history.push(`/`) } />
+      </Card.Header>
             <Card.Title>Post id: { post.id}</Card.Title>
             <Card.Text>
               {post.content}

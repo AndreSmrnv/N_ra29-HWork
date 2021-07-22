@@ -5,7 +5,8 @@ import {
   Card,
   Button,
   Form,
-  FloatingLabel
+  FloatingLabel,
+  CloseButton
 } from 'react-bootstrap';
 
 export default function PostNew() {
@@ -37,6 +38,9 @@ export default function PostNew() {
   if (!response)
     return (
       <Card className="text-center">
+        <Card.Header className="text-end" >
+          <CloseButton onClick={ ()=>history.push(`/`) } />
+        </Card.Header>
             <Card.Title>Новый пост</Card.Title>
             <Form  onSubmit={handleSubmit}>
               <FloatingLabel controlId="floatingTextarea2" label="Напиши новый пост">
