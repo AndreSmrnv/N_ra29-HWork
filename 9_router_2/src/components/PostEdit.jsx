@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
-import {  
+import {
   Card,
   Button,
   Form,
@@ -11,21 +11,21 @@ import {
 import PostsContext from '../services/contexts/postsContext';
 
 
-export default function EditPost({match}) {
-  const {id} = match.params;
+export default function EditPost({ match }) {
+  const { id } = match.params;
   const [posts, setPosts] = useContext(PostsContext);
-  const [form, setForm] = useState({});  
+  const [form, setForm] = useState({});
   const post = posts.find(item => item.id === +id) || { id, content: 'notFound' };
-  useEffect(()=> {
-    setForm(prev => ({...prev, content: post.content  }))
-  },[])
+  useEffect(() => {
+    setForm(prev => ({ ...prev, content: post.content }))
+  }, [])
   const [response, setResponse] = useState(null);
 
-  
+
   const history = useHistory()
 
-  
-  
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,40 +41,40 @@ export default function EditPost({match}) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
-      .then(
-          (response) => (response.ok) ?  history.push(`/`) : setResponse(false) 
-      )
+        .then(
+          (response) => (response.ok) ? history.push(`/`) : setResponse(false)
+        )
     }
-    postData({...form, id})
+    postData({ ...form, id })
   }
 
   if (!post) return (
     <Redirect to="/" />
   );
-  
+
   return (
     <Card className="text-center">
       <Card.Header className="text-end" >
-        <CloseButton onClick={ ()=>history.push(`/`) } />
+        <CloseButton onClick={() => history.push(`/`)} />
       </Card.Header>
-            <Card.Title>Редактировать публикацию</Card.Title>
-            <Form  onSubmit={handleSubmit}>
+      <Card.Title>Редактировать публикацию</Card.Title>
+      <Form onSubmit={handleSubmit}>
         <FloatingLabel controlId="floatingTextarea2" label={`Отредактируй пост ${id}`}>
-                <Form.Control 
-                  onChange={handleChange}
-                  as="textarea"
-                  placeholder="Leave a comment here"
-                  style={{ height: '100px' }}
-                  name='content'
-                  value={form.content}
-                />
-             </FloatingLabel>
-             <Card.Footer className="text-muted">
-              <Button variant="primary" onClick={handleSubmit}>Сохранить</Button>
-              
-            </Card.Footer>
-            </Form>
-      </Card>    
-    
+          <Form.Control
+            onChange={handleChange}
+            as="textarea"
+            placeholder="Leave a comment here"
+            style={{ height: '100px' }}
+            name='content'
+            value={form.content}
+          />
+        </FloatingLabel>
+        <Card.Footer className="text-muted">
+          <Button variant="primary" onClick={handleSubmit}>Сохранить</Button>
+
+        </Card.Footer>
+      </Form>
+    </Card>
+
   )
 }

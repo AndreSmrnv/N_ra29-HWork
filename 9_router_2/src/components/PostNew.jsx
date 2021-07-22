@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 
-import {  
+import {
   Card,
   Button,
   Form,
@@ -22,44 +22,44 @@ export default function PostNew() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
-      .then(
-          (response) => (response.ok) ? setResponse(true) : setResponse(false) 
-      )
+        .then(
+          (response) => (response.ok) ? setResponse(true) : setResponse(false)
+        )
     }
-    postData({...form, id: 0})
-    
+    postData({ ...form, id: 0 })
+
   }
 
   const handleChange = (e) => {
-    const {value} = e.target
-    setForm(prev => ({...prev, content: value }))
+    const { value } = e.target
+    setForm(prev => ({ ...prev, content: value }))
   }
 
   if (!response)
     return (
       <Card className="text-center">
         <Card.Header className="text-end" >
-          <CloseButton onClick={ ()=>history.push(`/`) } />
+          <CloseButton onClick={() => history.push(`/`)} />
         </Card.Header>
-            <Card.Title>Новый пост</Card.Title>
-            <Form  onSubmit={handleSubmit}>
-              <FloatingLabel controlId="floatingTextarea2" label="Напиши новый пост">
-                <Form.Control 
-                  onChange={handleChange}
-                  as="textarea"
-                  placeholder="Leave a comment here"
-                  style={{ height: '100px' }}
-                  value={form.content}
-                />
-             </FloatingLabel>
-             <Card.Footer className="text-muted">
-              <Button variant="primary" onClick={handleSubmit}>Опубликовать</Button>
-              
-            </Card.Footer>
-            </Form>
-      </Card>    
-     
+        <Card.Title>Новый пост</Card.Title>
+        <Form onSubmit={handleSubmit}>
+          <FloatingLabel controlId="floatingTextarea2" label="Напиши новый пост">
+            <Form.Control
+              onChange={handleChange}
+              as="textarea"
+              placeholder="Leave a comment here"
+              style={{ height: '100px' }}
+              value={form.content}
+            />
+          </FloatingLabel>
+          <Card.Footer className="text-muted">
+            <Button variant="primary" onClick={handleSubmit}>Опубликовать</Button>
+
+          </Card.Footer>
+        </Form>
+      </Card>
+
     )
 
-  return (<Redirect to="/"/>)
+  return (<Redirect to="/" />)
 }
