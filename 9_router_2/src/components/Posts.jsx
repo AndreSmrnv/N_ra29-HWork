@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+
 import {  
-  Card,
-  
+  Card,  
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import PostsContext from '../services/contexts/postsContext';

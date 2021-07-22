@@ -1,5 +1,6 @@
 
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
+import { Redirect, useHistory } from 'react-router-dom';
 import {  
   Card,
   Button,
@@ -7,7 +8,7 @@ import {
   FloatingLabel
 } from 'react-bootstrap';
 import PostsContext from '../services/contexts/postsContext';
-import { useHistory } from 'react-router-dom';
+
 
 export default function EditPost({match}) {
   const {id} = match.params;
@@ -46,12 +47,15 @@ export default function EditPost({match}) {
     postData({...form, id})
   }
 
- 
+  if (!post) return (
+    <Redirect to="/" />
+  );
+  
   return (
     <Card className="text-center">
             <Card.Title>Редактировать публикацию</Card.Title>
             <Form  onSubmit={handleSubmit}>
-              <FloatingLabel controlId="floatingTextarea2" label="Отредактируй пост">
+        <FloatingLabel controlId="floatingTextarea2" label={`Отредактируй пост ${id}`}>
                 <Form.Control 
                   onChange={handleChange}
                   as="textarea"
