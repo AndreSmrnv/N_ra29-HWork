@@ -1,0 +1,9 @@
+.Portfolio_div {
+    column-count: 3;
+    column-gap: 15px;
+  }
+  
+  .Portfolio_img {
+    width: 100%;
+    padding-top: 10px;
+  }  
