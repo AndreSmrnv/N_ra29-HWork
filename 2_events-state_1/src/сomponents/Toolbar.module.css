@@ -1,0 +1,20 @@
+
+.Toolbar {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .Toolbar li {
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 0 3px;
+    border: 1px solid #000;
+    cursor: pointer;
+  }
+  
+  .Toolbar .selected {
+    background-color: #000;
+    color: #fff;
+  }
+  
